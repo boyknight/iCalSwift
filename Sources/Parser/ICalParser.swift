@@ -200,7 +200,7 @@ public struct ICalParser {
             .components(separatedBy: "\n")
             .map { $0.split(separator: ":", maxSplits: 1, omittingEmptySubsequences: true) }
             .filter { $0.count > 1 }
-            .map { (String($0[0]), String($0[1])) }
+            .map { (String($0[0]), String($0[1]).replacing("\r", with: "")) }
     }
     
     private func findComponent(
